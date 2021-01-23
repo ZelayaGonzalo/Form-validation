@@ -9,31 +9,32 @@
     <link rel="stylesheet" href="style.css">
 <body>
     <main class="form-signin">
-        <form class="form">
+        <form class="form" onsubmit=checkAndSubmit(event)>
             <label class="input-field">
                 <p>Username:</p>
-                <input type="text" id="username" name="username" oninput=checkUsername(event)>     
+                <input type="text" id="username" name="username" oninput=liveCheckUsername(event) required>     
             </label class="input-field">
             <div class="invalid-feedback" id="user-validation"></div>
             <label class="input-field">
                 <p>Email:</p>
-                <input type="email">
+                <input type="email" oninput=checkEmail(event) required>
             </label class="input-field">
-            <div class="invalid-feedback">Please insert a valid email</div>
+            <div class="invalid-feedback" id="email-validation"></div>
             <label class="input-field">
                 <p>Password:</p>
-                <input type="password" id="password" name="password">
+                <input type="password" id="password" name="password" oninput=liveCheckPassword(event) required>
             </label class="input-field">
             <ul>
-                <li><div class="invalid-feedback" id="password-validation">Must be at least 8 characters long</div></li>
-                <li><div class="invalid-feedback" id="password-validation">Must contain one uppercase</div></li>
-                <li><div class="invalid-feedback" id="password-validation">Must contain one number</div></li>
+                <li></li><div class="invalid-feedback password-validation" ></div></li</li>
+                <li></li><div class="invalid-feedback password-validation" ></div></li</li>
+                <li></li><div class="invalid-feedback password-validation" ></div></l</li>
+                <li></li><div class="invalid-feedback password-validation" ></div></l</li>
             </ul>
             <label class="input-field">
                 <p>Confirm Password:</p>
-                <input type="password" id="password-repeat" name="password-repeat">
+                <input type="password" id="password-repeat" name="password-repeat" oninput=liveCheckRepeatPassword(event) required>
             </label class="input-field">
-            <div class="invalid-feedback" id="password-repeat-validation">Password does not match</div>
+            <div class="invalid-feedback" id="password-repeat-validation"></div>
             <button class="btn btn-primary">Submit</button>
         </form>
     </main>

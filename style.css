@@ -4,6 +4,7 @@
 }
 ul,ol,li{
     list-style: none;
+    height: auto;
 }
 body{
     width: 100vw;
@@ -19,7 +20,11 @@ p{
     font-size: 12px;
     margin-bottom: 10px;
 }
+input:invalid {
+    -moz-box-shadow: none;
+    box-shadow: none;
 
+}
 input{
     outline: none;
     border: none;
@@ -45,7 +50,8 @@ input{
 }
 
 .invalid-feedback{
-    padding-bottom: 15px;
+    display: none;
+    padding-bottom: 2px;
     line-height: 1;
     color: #c0392b;
 }
