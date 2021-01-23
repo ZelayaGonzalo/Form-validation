@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live form validation</title>
+      <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"></head>
+    <link rel="stylesheet" href="style.css">
+<body>
+    <main class="form-signin">
+        <form class="form">
+            <label class="input-field">
+                <p>Username:</p>
+                <input type="text" id="username" name="username" oninput=checkUsername(event)>     
+            </label class="input-field">
+            <div class="invalid-feedback" id="user-validation"></div>
+            <label class="input-field">
+                <p>Email:</p>
+                <input type="email">
+            </label class="input-field">
+            <div class="invalid-feedback">Please insert a valid email</div>
+            <label class="input-field">
+                <p>Password:</p>
+                <input type="password" id="password" name="password">
+            </label class="input-field">
+            <ul>
+                <li><div class="invalid-feedback" id="password-validation">Must be at least 8 characters long</div></li>
+                <li><div class="invalid-feedback" id="password-validation">Must contain one uppercase</div></li>
+                <li><div class="invalid-feedback" id="password-validation">Must contain one number</div></li>
+            </ul>
+            <label class="input-field">
+                <p>Confirm Password:</p>
+                <input type="password" id="password-repeat" name="password-repeat">
+            </label class="input-field">
+            <div class="invalid-feedback" id="password-repeat-validation">Password does not match</div>
+            <button class="btn btn-primary">Submit</button>
+        </form>
+    </main>
+    <script src="validation.js"></script>
+ </html>
