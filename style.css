@@ -59,3 +59,8 @@ input{
 .btn{
     align-self: center;
 }
+
+#last-validation{
+    align-self: center;
+    padding: 10px;
+}

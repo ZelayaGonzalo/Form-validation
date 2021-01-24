@@ -13,17 +13,17 @@
             <label class="input-field">
                 <p>Username:</p>
                 <input type="text" id="username" name="username" oninput=liveCheckUsername(event) required>     
-            </label class="input-field">
+            </label>
             <div class="invalid-feedback" id="user-validation"></div>
             <label class="input-field">
                 <p>Email:</p>
-                <input type="email" oninput=checkEmail(event) required>
-            </label class="input-field">
+                <input type="email" id="email" oninput=checkEmail(event) required>
+            </label>
             <div class="invalid-feedback" id="email-validation"></div>
             <label class="input-field">
                 <p>Password:</p>
                 <input type="password" id="password" name="password" oninput=liveCheckPassword(event) required>
-            </label class="input-field">
+            </label>
             <ul>
                 <li></li><div class="invalid-feedback password-validation" ></div></li</li>
                 <li></li><div class="invalid-feedback password-validation" ></div></li</li>
@@ -33,9 +33,10 @@
             <label class="input-field">
                 <p>Confirm Password:</p>
                 <input type="password" id="password-repeat" name="password-repeat" oninput=liveCheckRepeatPassword(event) required>
-            </label class="input-field">
+            </label>
             <div class="invalid-feedback" id="password-repeat-validation"></div>
             <button class="btn btn-primary">Submit</button>
+            <div class="invalid-feedback" id="last-validation"></div>
         </form>
     </main>
     <script src="validation.js"></script>

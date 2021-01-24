@@ -2,22 +2,43 @@ const userValidation = document.getElementById('user-validation')
 const passwordValidation = document.querySelectorAll('.password-validation')
 const passwordRepeatValidation = document.getElementById('password-repeat-validation')
 const emailValidation = document.getElementById('email-validation')
+const lastValidation = document.getElementById('last-validation')
 
 const username = document.getElementById('username')
 const password = document.getElementById('password')
-const repeatPassword = document.getElementById('repeat-password')
-const email = document.getElementById('email-validation')
+const repeatPassword = document.getElementById('password-repeat')
+const email = document.getElementById('email')
 
 let currentPassword;
 
-function checkUsername(value){
-    if(value.length >= 6){
+function checkLenght(value,number){
+    if(value.length >= number){
         return true  
     }
     else{
         return false
     }
 }
+function checkUppercase(string){
+    const check = Array.from(string)
+        for(let i=0; i< string.length; i++){
+            if(check[i] === check[i].toUpperCase() && parseInt(check[i]) != check[i]){
+                return true
+            }
+        }
+        return false
+}
+function checkNumber(string){
+    const array=Array.from(string)
+    for(let i=0; i< string.length;i++){
+        if(array[i] == parseInt(array[i])){
+            return true
+        }
+    }
+    return false
+}
+
+
 function liveCheckUsername(event){
     const value = event.target.value
     if(value === ""){
@@ -25,7 +46,7 @@ function liveCheckUsername(event){
     }
     else{
         userValidation.style.display="block"
-        if(checkUsername(value)){
+        if(checkLenght(value,6)){
             userValidation.innerHTML="Looks good!"
             userValidation.style.color="#27ae60"
         }
@@ -37,38 +58,20 @@ function liveCheckUsername(event){
 }
 function liveCheckPassword(event){
     checkPassword(event.target.value)
+    checkRepeatPassword(repeatPassword.value)
 }
 function liveCheckRepeatPassword(event){
     checkRepeatPassword(event.target.value)
 }
 
 function checkPassword(value){
-    currentPassword = value
-    function checkUppercase(string){
-        const check = Array.from(string)
-        for(let i=0; i< string.length; i++){
-            if(check[i] === check[i].toUpperCase() && parseInt(check[i]) != check[i]){
-                return true
-            }
-        }
-        return false
-    }
-    function checkNumber(string){
-        const array=Array.from(string)
-        for(let i=0; i< string.length;i++){
-            if(array[i] == parseInt(array[i])){
-                return true
-            }
-        }
-        return false
-    }
-    
+    currentPassword=value
     if(value === ""){
         passwordValidation.forEach(valid=> valid.style.display="none" )
     }
     else{
         passwordValidation.forEach(valid=> valid.style.display="block" )
-        if(value.length < 8){
+        if(!checkLenght(value,8)){
             passwordValidation[0].innerHTML="Must be at least 8 characters long"
         }
         else{
@@ -134,10 +137,16 @@ function checkEmail(event){
 
 function checkAndSubmit(event){
     event.preventDefault()
-    if(checkUsername(username.value)){
-        console.log("pass")
+    
+    if(checkLenght(username.value,6) && checkLenght(password.value,8) && checkUppercase(password.value) && checkNumber(password.value) && email.checkValidity() && (repeatPassword.value === currentPassword)){
+        lastValidation.style.display="block"
+        lastValidation.style.color = "#27ae60"
+        lastValidation.innerHTML = "Registered sucessfully!!"
     }
     else{
-        console.log("no pass")
+        lastValidation.style.display="block"
+        lastValidation.innerHTML = "Please fix mistakes and try again"
+        lastValidation.style.color = "#c0392b"
     }
+    
 }
